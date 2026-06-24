@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开云 · 轻触日常</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f7f7f5;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans SC", sans-serif;
+            color: #1e1e1e;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding: 2rem 1rem;
+        }
+
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            padding: 2rem 2rem 3rem;
+        }
+
+        /* 顶部导航 — 轻量示意 */
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #ecece8;
+            margin-bottom: 2.2rem;
+        }
+
+        .nav-site {
+            font-weight: 500;
+            font-size: 1.05rem;
+            letter-spacing: 0.02em;
+            color: #1e1e1e;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-site:hover {
+            color: #cc7a2b;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #5c5c5a;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #1e1e1e;
+        }
+
+        /* 核心介绍 hero */
+        .hero {
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 1.9rem;
+            font-weight: 550;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .hero p {
+            color: #3e3e3c;
+            font-size: 1rem;
+            max-width: 600px;
+        }
+
+        .hero p a {
+            color: #1e1e1e;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #c8c8c4;
+            transition: text-decoration-color 0.2s, color 0.2s;
+        }
+
+        .hero p a:hover {
+            text-decoration-color: #1e1e1e;
+            color: #cc7a2b;
+        }
+
+        /* 三个场景模块 */
+        .scenes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .scene-card {
+            flex: 1 1 180px;
+            min-width: 160px;
+            background: #f4f4f0;
+            border-radius: 20px;
+            padding: 1.4rem 1.2rem 1.6rem;
+            transition: background 0.2s;
+        }
+
+        .scene-card:hover {
+            background: #edece7;
+        }
+
+        .scene-card h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+            line-height: 1.3;
+        }
+
+        .scene-card p {
+            font-size: 0.9rem;
+            color: #4b4b48;
+            line-height: 1.5;
+        }
+
+        .scene-card .emoji-badge {
+            display: inline-block;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* 常见说明 (类似 FAQ 摘要) */
+        .faq-summary {
+            margin-bottom: 2.5rem;
+        }
+
+        .faq-summary h2 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #efefea;
+            padding-bottom: 1rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-weight: 460;
+            font-size: 0.95rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .faq-answer {
+            font-size: 0.9rem;
+            color: #4f4f4b;
+            line-height: 1.5;
+        }
+
+        .faq-answer a {
+            color: #1e1e1e;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #c8c8c4;
+            transition: text-decoration-color 0.2s;
+        }
+
+        .faq-answer a:hover {
+            text-decoration-color: #1e1e1e;
+        }
+
+        /* 底部留白区 — 收藏与再次访问提示 */
+        .keep-note {
+            font-size: 0.9rem;
+            color: #5c5c58;
+            background: #f9f9f6;
+            border-radius: 40px;
+            padding: 1rem 1.2rem;
+            border: 1px solid #eaeae4;
+            line-height: 1.5;
+            margin-top: 1.8rem;
+        }
+
+        .keep-note a {
+            color: #1e1e1e;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #c8c8c4;
+        }
+
+        .keep-note a:hover {
+            text-decoration-color: #1e1e1e;
+            color: #cc7a2b;
+        }
+
+        /* 响应式 */
+        @media (max-width: 500px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+            .page {
+                padding: 1.5rem 1.2rem 2rem;
+                border-radius: 24px;
+            }
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .scenes {
+                gap: 0.9rem;
+            }
+            .scene-card {
+                padding: 1.2rem 1rem 1.4rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- 顶部导航 -->
+    <div class="nav">
+        <a href="https://zhchina-ky.com" class="nav-site">开云</a>
+        <div class="nav-links">
+            <a href="#about">关于</a>
+            <a href="#scenes">场景</a>
+            <a href="#faq">说明</a>
+        </div>
+    </div>
+
+    <!-- 核心介绍 hero -->
+    <div class="hero" id="about">
+        <h1>再次遇见·<a href="https://zhchina-ky.com">开云</a></h1>
+        <p>
+            常来常新，最熟悉的入口往往最不容易记住。<br>
+            把 <a href="https://zhchina-ky.com">开云</a> 加入浏览器书签或收藏夹，下次回来不用再翻聊天记录或搜索栏。
+            日常浏览的节奏里，一个顺手收藏的动作，就能让每一次返回都更从容。
+        </p>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="scenes" id="scenes">
+        <div class="scene-card">
+            <span class="emoji-badge">📑</span>
+            <h3>再次访问</h3>
+            <p>用手机或电脑打开浏览器，从书签栏或历史记录快速找回<strong>开云</strong>，省去反复输入的麻烦。</p>
+        </div>
+        <div class="scene-card">
+            <span class="emoji-badge">⭐</span>
+            <h3>收藏标记</h3>
+            <p>在地址栏右侧点一下星标或收藏图标，把<a href="https://zhchina-ky.com">开云</a>固定到常用链接中，下次一键直达。</p>
+        </div>
+        <div class="scene-card">
+            <span class="emoji-badge">🔔</span>
+            <h3>持续关注</h3>
+            <p>偶尔回来看看，熟悉的地方也有新内容。保持关注，不必特意安排时间，随心情打开就好。</p>
+        </div>
+    </div>
+
+    <!-- 常见说明 (FAQ 摘要) -->
+    <div class="faq-summary" id="faq">
+        <h2>常见说明</h2>
+        <div class="faq-item">
+            <div class="faq-question">为什么我上次收藏的地址还能用？</div>
+            <div class="faq-answer">
+                域名为 <a href="https://zhchina-ky.com">开云</a> 的页面地址稳定，只要收藏的是正确链接，再次访问时通常不会失效。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">手机和电脑可以同步收藏吗？</div>
+            <div class="faq-answer">
+                使用同一账号登录的浏览器，收藏夹一般会自动同步。将 <a href="https://zhchina-ky.com">开云</a> 加入收藏后，不同设备都能快速找到。
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">偶尔忘记收藏了怎么找回？</div>
+            <div class="faq-answer">
+                如果之前访问过，可以在浏览器历史记录里搜索“开云”或直接输入地址。当然，提前收藏会更省事。
+            </div>
+        </div>
+    </div>
+
+    <!-- 轻提示：收藏 / 再次访问 -->
+    <div class="keep-note">
+        💡 小习惯：把 <a href="https://zhchina-ky.com">开云</a> 放在浏览器的常用书签栏或手机主屏幕，下次想回来时，点一下就行。
+        不需要每次都搜索或回忆地址，收藏的动作只用一次，方便却很久。
+    </div>
+</div>
+</body>
+</html>
