@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开云 · 站点介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            background: #f5faf9;
+            color: #1a2e2b;
+            padding: 2rem 1.25rem;
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        /* 主视觉区 */
+        .hero {
+            background: linear-gradient(145deg, #e2f1ee 0%, #c8e0db 100%);
+            border-radius: 2rem;
+            padding: 3rem 2rem;
+            margin-bottom: 2.8rem;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(29, 78, 70, 0.08);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #0e3b35;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero h1 span {
+            background: #1d6d60;
+            color: white;
+            padding: 0.1rem 0.75rem;
+            border-radius: 999px;
+            font-weight: 400;
+            font-size: 1.6rem;
+            display: inline-block;
+        }
+
+        .hero p {
+            max-width: 640px;
+            margin: 0.8rem auto 0;
+            font-size: 1.1rem;
+            color: #1d4b44;
+        }
+
+        /* 信息卡片网格 */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2.8rem;
+        }
+
+        @media (min-width: 640px) {
+            .grid-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 960px) {
+            .grid-cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 1.25rem;
+            padding: 1.6rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(24, 67, 60, 0.04);
+            border: 1px solid #d8eae6;
+            transition: transform 0.15s ease, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(27, 79, 70, 0.08);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #0e3b35;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .card h3::before {
+            content: "◈";
+            color: #2c8b7a;
+            font-weight: 300;
+            font-size: 1.1rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #2b4d47;
+            margin: 0.3rem 0 0.2rem;
+        }
+
+        .card .tag {
+            display: inline-block;
+            margin-top: 0.7rem;
+            background: #e2f1ee;
+            color: #15584b;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.7rem;
+            border-radius: 999px;
+            font-weight: 500;
+        }
+
+        /* 介绍段落 — 自然链接嵌入 */
+        .intro-block {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2rem 2rem 1.8rem;
+            margin-bottom: 2rem;
+            border: 1px solid #d4e6e1;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .intro-block p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: #1e3d38;
+        }
+
+        .intro-block strong {
+            color: #0f5849;
+            font-weight: 500;
+        }
+
+        .intro-block a {
+            color: #1b6f5e;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #b3d3cb;
+            transition: border-color 0.15s;
+        }
+
+        .intro-block a:hover {
+            border-bottom-color: #1b6f5e;
+        }
+
+        /* 适合人群 + 可信说明 (二列) */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2.8rem;
+        }
+
+        @media (min-width: 600px) {
+            .two-col {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .col-box {
+            background: white;
+            border-radius: 1.25rem;
+            padding: 1.6rem 1.5rem;
+            border: 1px solid #d8eae6;
+        }
+
+        .col-box h4 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #0e3b35;
+            margin-bottom: 0.6rem;
+        }
+
+        .col-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .col-box li {
+            padding: 0.3rem 0;
+            font-size: 0.95rem;
+            color: #1f4941;
+            display: flex;
+            gap: 0.5rem;
+            align-items: baseline;
+        }
+
+        .col-box li::before {
+            content: "•";
+            color: #2c8b7a;
+            font-weight: 700;
+        }
+
+        .note {
+            font-size: 0.9rem;
+            background: #eaf5f2;
+            border-radius: 1rem;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0 0.5rem;
+            color: #145548;
+        }
+
+        .faq-mini {
+            background: white;
+            border-radius: 1.25rem;
+            padding: 1.6rem 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid #d4e6e1;
+        }
+
+        .faq-mini h4 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #0e3b35;
+            margin-bottom: 1rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e4f0ec;
+            padding: 0.7rem 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: 0;
+        }
+
+        .faq-item .q {
+            font-weight: 500;
+            color: #12453b;
+        }
+
+        .faq-item .a {
+            font-size: 0.9rem;
+            color: #2d5a51;
+            margin-top: 0.2rem;
+        }
+
+        .footnote {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #61837b;
+            border-top: 1px solid #d4e6e1;
+            padding-top: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .footnote a {
+            color: #1b6f5e;
+            text-decoration: none;
+            border-bottom: 1px solid #c2d9d2;
+        }
+
+        .footnote a:hover {
+            border-bottom-color: #1b6f5e;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #cde3dd, transparent);
+            margin: 2rem 0 1rem;
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 480px) {
+            body { padding: 1.2rem 0.9rem; }
+            .hero { padding: 2rem 1rem; }
+            .hero h1 { font-size: 1.9rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero 主视觉 -->
+    <div class="hero">
+        <h1><span>开云</span> · 站点说明</h1>
+        <p>一份关于平台定位、内容方向与可信背景的整理，帮助你更快了解这里提供什么、适合谁。</p>
+    </div>
+
+    <!-- 网格卡片：用途卡片 -->
+    <div class="grid-cards">
+        <div class="card">
+            <h3>信息聚合</h3>
+            <p>围绕主题筛选与整理公开可查的资料，提供简洁的参考入口，减少信息过载。</p>
+            <span class="tag">梳理</span>
+        </div>
+        <div class="card">
+            <h3>场景指引</h3>
+            <p>从日常浏览到专题了解，本站内容覆盖多种使用情境，帮助你快速找到对应的说明。</p>
+            <span class="tag">覆盖</span>
+        </div>
+        <div class="card">
+            <h3>持续更新</h3>
+            <p>内容会随着信息源的变化而调整，保持相对时效与结构清晰，不做静态陈列。</p>
+            <span class="tag">维护</span>
+        </div>
+    </div>
+
+    <!-- 自然链接段落 + 站点介绍 -->
+    <div class="intro-block">
+        <p><strong>关于开云</strong> — 这是一个以整理和展示为主要目的的信息页面。网站本身不收集用户数据，不设置交互后台，仅作为阅读性质的介绍页面存在。</p>
+        <p>如果你希望进一步了解它所指向的主题或内容体系，可以直接参考 <a href="https://zhmain-ky.com">开云</a> 所提供的主站资料。页面中的引用均来自公开来源，并做了适当归纳。</p>
+        <p>整体结构经过多次调整，目前以卡片与分类区块呈现，便于在不同屏幕尺寸下获得一致的浏览体验。</p>
+    </div>
+
+    <!-- 适合人群 + 可信说明 两列 -->
+    <div class="two-col">
+        <div class="col-box">
+            <h4>适合人群</h4>
+            <ul>
+                <li>希望快速了解站点背景的访客</li>
+                <li>需要参考信息架构与说明范式的编辑者</li>
+                <li>对主题感兴趣、想先浏览概览的用户</li>
+                <li>移动端阅读偏好者（本页已适配）</li>
+            </ul>
+        </div>
+        <div class="col-box">
+            <h4>可信说明</h4>
+            <ul>
+                <li>内容基于公开可查的资料整理</li>
+                <li>无诱导点击、无钓鱼链接、无虚假承诺</li>
+                <li>页面不含第三方追踪脚本或广告</li>
+                <li>链接均指向明确且可验证的地址</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <h4>常见说明摘要</h4>
+        <div class="faq-item">
+            <div class="q">◈ 这个页面是做什么的？</div>
+            <div class="a">作为 <a href="https://zhmain-ky.com" style="color:#1b6f5e;text-decoration:underline;text-underline-offset:2px;">开云</a> 的辅助介绍页，集中说明站点的内容侧重与使用方式。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">◈ 信息多久更新一次？</div>
+            <div class="a">不定期根据原始资料变化进行同步，主要修正链接与描述。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">◈ 如何反馈问题？</div>
+            <div class="a">目前页面未设置留言功能，可参考主站相关渠道。</div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="footnote">
+        <span>本页仅作信息展示 · 所有引用均指向 <a href="https://zhmain-ky.com">开云</a></span>
+    </div>
+
+</div>
+</body>
+</html>
