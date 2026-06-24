@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>开云 · 信息索引与资料整理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f4f9fc;
+            color: #1e2b33;
+            line-height: 1.6;
+            padding: 0 1.2rem;
+        }
+
+        .page {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 2rem 0 3rem;
+        }
+
+        /* hero */
+        .hero {
+            background: linear-gradient(145deg, #d9efe9 0%, #b5ded4 100%);
+            border-radius: 2rem;
+            padding: 2.8rem 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 24px rgba(31, 99, 82, 0.07);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-text {
+            flex: 1 1 280px;
+        }
+
+        .hero-text h1 {
+            font-size: 2.2rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            color: #103c34;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: #23594e;
+            max-width: 520px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text .mention {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(2px);
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #1b5a4b;
+            border: 1px solid #b2d5cb;
+        }
+
+        .hero-illustration {
+            flex: 0 0 120px;
+            height: 120px;
+            background: #e1f3ee;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #0b5a48;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            margin: 1rem auto 0;
+        }
+
+        @media (min-width: 600px) {
+            .hero-illustration {
+                margin: 0 1rem 0 0;
+            }
+        }
+
+        /* 网格卡片区 */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 540;
+            margin: 2rem 0 1.2rem;
+            color: #0e4b3e;
+            border-left: 5px solid #3db3a0;
+            padding-left: 0.9rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2.2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 1.4rem;
+            padding: 1.6rem 1.2rem;
+            box-shadow: 0 4px 14px rgba(0, 30, 20, 0.03);
+            transition: transform 0.15s, box-shadow 0.15s;
+            border: 1px solid #d9ede7;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 26px rgba(31, 99, 82, 0.08);
+            border-color: #abd9ce;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 530;
+            margin-bottom: 0.5rem;
+            color: #12493d;
+        }
+
+        .card p {
+            font-size: 0.94rem;
+            color: #2f4d44;
+        }
+
+        .card .icon {
+            display: inline-block;
+            font-size: 1.8rem;
+            margin-bottom: 0.25rem;
+            line-height: 1;
+        }
+
+        /* 说明区块 */
+        .explain-block {
+            background: white;
+            border-radius: 1.8rem;
+            padding: 2rem 1.8rem;
+            margin-bottom: 2.4rem;
+            border: 1px solid #d1e8e1;
+        }
+
+        .explain-block h2 {
+            font-size: 1.4rem;
+            font-weight: 520;
+            color: #125447;
+            margin-bottom: 0.8rem;
+        }
+
+        .explain-block p {
+            margin-bottom: 0.9rem;
+        }
+
+        /* FAQ摘要 */
+        .faq-summary {
+            background: #e3f2ed;
+            border-radius: 1.6rem;
+            padding: 1.8rem 1.6rem;
+            margin: 2.2rem 0 1.8rem;
+        }
+
+        .faq-summary h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #004d3d;
+            margin-bottom: 1rem;
+        }
+
+        .faq-item {
+            margin-bottom: 0.8rem;
+        }
+
+        .faq-item strong {
+            color: #16584a;
+            font-weight: 550;
+        }
+
+        .faq-item p {
+            color: #2f5147;
+            margin-top: 0.2rem;
+            font-size: 0.95rem;
+        }
+
+        /* 底部链接 */
+        .footer-links {
+            border-top: 1px solid #c9ded6;
+            padding: 1.8rem 0 0.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem 2rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a {
+            color: #1b6655;
+            text-decoration: none;
+            border-bottom: 1px dotted #7db6a8;
+        }
+
+        .footer-links a:hover {
+            color: #0c4c3e;
+            border-bottom: 1px solid #0c4c3e;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.83rem;
+            color: #5d7e74;
+        }
+
+        a {
+            color: #187a66;
+        }
+
+        a:hover {
+            color: #0b5b4a;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- hero -->
+        <div class="hero">
+            <div class="hero-text">
+                <h1>索引、归档、理解</h1>
+                <p>围绕「开云」所做的一层资料整理与信息导航，帮助你在分散的内容里找到相对清晰的脉络。</p>
+                <span class="mention">📁 持续收录 · 结构化索引</span>
+            </div>
+            <div class="hero-illustration">
+                🗂️
+            </div>
+        </div>
+
+        <!-- 优势卡片：网格 -->
+        <div class="grid">
+            <div class="card">
+                <div class="icon">📋</div>
+                <h3>结构化归类</h3>
+                <p>将散落的信息按主题、来源、时效整理，减少重复检索的时间。</p>
+            </div>
+            <div class="card">
+                <div class="icon">🔎</div>
+                <h3>关键词链路</h3>
+                <p>从核心词出发，串联相关条目与背景，形成可追溯的知识片段。</p>
+            </div>
+            <div class="card">
+                <div class="icon">🧩</div>
+                <h3>情境化备注</h3>
+                <p>每条索引附带简要语境说明，帮助判断信息是否适合当前需要。</p>
+            </div>
+            <div class="card">
+                <div class="icon">🔄</div>
+                <h3>定期复核</h3>
+                <p>对已有条目做可用性检查，移除失效链接，更新摘要内容。</p>
+            </div>
+        </div>
+
+        <!-- 说明区块：从资料整理和信息索引角度 -->
+        <div class="explain-block">
+            <h2>一份安静的索引工作</h2>
+            <p>
+                资料整理本身不是终点，而是为了让后续的查找、对比和引用更省力。<a href="https://zhindex-ky.com">开云</a> 
+                这个站点所做的，就是把这些碎片按照一种相对稳定的方式排列起来：不追求面面俱到，而是在能力范围内保持清晰。
+            </p>
+            <p>
+                索引的价值在于结构而非罗列。每一条收录都经过筛选和归类，并尽量记录下它为什么被放在这里。如果你也在寻找一些特定方向的信息，或许可以从这里开始——然后沿着标记继续走。
+            </p>
+        </div>
+
+        <!-- 小场景引用 / 使用提示 -->
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.5rem 0;">
+            <div style="background: #d1ece4; border-radius: 1.2rem; padding: 1rem 1.4rem; flex: 1 1 180px;">
+                <span style="font-weight: 500;">📌 适合快速浏览</span>
+                <p style="font-size: 0.9rem; margin-top: 0.2rem;">条目加注了摘要，不用逐一点开即可判断大致方向。</p>
+            </div>
+            <div style="background: #c8e6dd; border-radius: 1.2rem; padding: 1rem 1.4rem; flex: 1 1 180px;">
+                <span style="font-weight: 500;">📌 保持克制更新</span>
+                <p style="font-size: 0.9rem; margin-top: 0.2rem;">宁少勿滥，索引不是信息堆积，而是筛选后的标记。</p>
+            </div>
+        </div>
+
+        <!-- FAQ摘要 -->
+        <div class="faq-summary">
+            <h3>❓ 常见想法</h3>
+            <div class="faq-item">
+                <strong>这个索引是实时更新的吗？</strong>
+                <p>不定期检查与补充，重大变化会做标记。没有固定的时间表，但会持续留意。</p>
+            </div>
+            <div class="faq-item">
+                <strong>我可以推荐条目加入索引吗？</strong>
+                <p>目前采用内部整理方式，暂未开放提交。如果你有值得索引的线索，可以邮件联系。</p>
+            </div>
+            <div class="faq-item">
+                <strong>索引范围有边界吗？</strong>
+                <p>主要收录与「开云」主题相关的资料、背景以及分析类的信息，不收录个人观点或未标记来源的内容。</p>
+            </div>
+        </div>
+
+        <!-- 底部链接区 -->
+        <div class="footer-links">
+            <a href="https://zhindex-ky.com">开云</a>
+            <a href="#">关于索引</a>
+            <a href="#">联系方式</a>
+        </div>
+        <div class="footer-note">
+            内容索引 · 仅供信息参考，不构成任何建议
+        </div>
+    </div>
+</body>
+</html>
